@@ -1,11 +1,10 @@
-import React, {FC, useCallback, useRef, useState} from 'react'
+import React, {FC, useCallback, useMemo, useRef, useState} from 'react'
 import {
   RefreshControl,
   SafeAreaView,
   ScrollView,
   Dimensions,
   View,
-  Image,
   StyleSheet,
   Text,
 } from 'react-native'
@@ -13,8 +12,9 @@ import Carousel, {Pagination} from 'react-native-snap-carousel'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {Button, Divider} from 'react-native-elements'
 import {ProductModel, useGetProductByIdQuery} from '../../features/products'
-import {NavigationInterface} from '../../shared/types/navigation.interface'
-import {productImagesMocks as images} from './images.mocks'
+import {makeRandomValue, NavigationInterface} from '../../shared'
+import {config} from '../../const'
+import {Card} from 'react-native-elements'
 
 type RenderCarouselItem = {
   item: any
@@ -22,8 +22,7 @@ type RenderCarouselItem = {
 }
 
 const renderCarouselItem = ({item}: RenderCarouselItem) => {
-  const {src} = item
-  return <Image source={src} />
+  return <Card.Image source={item} />
 }
 
 interface ProductDetailsScreenProps extends NavigationInterface {}
@@ -36,6 +35,13 @@ export const ProductDetailsScreen: FC<ProductDetailsScreenProps> = ({
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState<number>(0)
   const {width: viewportWidth} = Dimensions.get('window')
   const carouselRef = useRef<HTMLElement | any>()
+  const images = useMemo(
+    () =>
+      Array.from({length: makeRandomValue(3, 6)}).map((_, index) => ({
+        uri: `${config.baseImageUrl}seed/${index + 1}/300/200`,
+      })),
+    [],
+  )
 
   const onRefresh = useCallback(() => refetch(), [])
   const refHandler = (ref: HTMLElement) => {
