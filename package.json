@@ -11,9 +11,12 @@
     "lint-fix": "npx eslint . --ext .ts,.tsx --fix",
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081'",
     "redux-devtools": "npx redux-devtools --open=electron --hostname=localhost --port=8000",
-    "serve": "npm run redux-devtools && npm run ios"
+    "serve": "npm run redux-devtools && npm run ios",
+    "pod": "cd ios && pod install",
+    "unpod": "cd ios && pod deintegrate"
   },
   "dependencies": {
+    "@react-navigation/drawer": "^6.1.8",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "@reduxjs/toolkit": "^1.7.0",
@@ -22,6 +25,8 @@
     "react": "17.0.2",
     "react-native": "0.66.3",
     "react-native-elements": "^3.4.2",
+    "react-native-gesture-handler": "^2.1.0",
+    "react-native-reanimated": "^2.3.1",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
     "react-native-snap-carousel": "^3.9.1",
