@@ -1,11 +1,19 @@
 import React, {useState} from 'react'
-import {TextInput, View, Button} from 'react-native'
-import {useCreateTokenMutation} from '../../features/auth'
+import {View} from 'react-native'
+import {Button, Input} from 'react-native-elements'
+import {
+  sharedUseCreateTokenMutation,
+  useCreateTokenMutation,
+} from '../../features/auth'
+import styles from './styles'
 
 export const SignUpScreen = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [createToken] = useCreateTokenMutation()
+  // @TODO: remove placeholder later
+  const [username, setUsername] = useState('maksim@example.com')
+  const [password, setPassword] = useState('q12345')
+  const [createToken] = useCreateTokenMutation({
+    fixedCacheKey: sharedUseCreateTokenMutation,
+  })
 
   const handleSignIn = () => {
     createToken({username, password})
@@ -13,18 +21,24 @@ export const SignUpScreen = () => {
 
   return (
     <View>
-      <TextInput
+      <Input
         placeholder="Username"
         value={username}
         onChangeText={setUsername}
+        autoCompleteType={false}
       />
-      <TextInput
+      <Input
         placeholder="Password"
+        secureTextEntry
         value={password}
         onChangeText={setPassword}
-        secureTextEntry
+        autoCompleteType={false}
       />
-      <Button title="Sign in" onPress={handleSignIn} />
+      <Button
+        style={styles.signInButton}
+        title="Sign Up"
+        onPress={handleSignIn}
+      />
     </View>
   )
 }

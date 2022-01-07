@@ -5,20 +5,23 @@ import {CircleBorder} from './CircleBorder'
 
 interface IconCircleProps {
   circleSize: number
-  borderWidth: number
-  borderColor: string
+  borderWidth?: number
+  borderColor?: string
+  backgroundColor?: string
 }
 
 export const IconCircle: FC<IconCircleProps & IconProps> = ({
   circleSize,
   borderWidth = 2,
   borderColor = 'black',
+  backgroundColor = '#ffffff',
   ...props
 }) => (
   <CircleBorder
     size={circleSize}
     borderWidth={borderWidth}
-    borderColor={borderColor}>
+    borderColor={borderColor}
+    backgroundColor={backgroundColor}>
     <Icon {...props} />
   </CircleBorder>
 )
