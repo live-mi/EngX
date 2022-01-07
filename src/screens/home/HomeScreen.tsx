@@ -21,9 +21,9 @@ export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
   )
 
   const onProductCardClick = useCallback((id: string) => {
-    navigation.push('ProductDetails', {
-      id,
-      // screen: 'ProductDetails',
+    navigation.navigate('ProductDetailsStack', {
+      screen: 'ProductDetails',
+      params: {id},
     })
   }, [])
 
