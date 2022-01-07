@@ -37,10 +37,10 @@ export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
         refreshControl={
           <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
         }>
-        {/*@ts-ignore*/}
         <Input
           placeholder="Search Item"
           leftIcon={<Icon name="user" size={24} color="black" />}
+          autoCompleteType={false}
           value={searchText}
           onChangeText={onSearchChange}
         />

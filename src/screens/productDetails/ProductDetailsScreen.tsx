@@ -14,7 +14,7 @@ import {Card} from 'react-native-elements'
 import {ProductModel, useGetProductByIdQuery} from '../../features/products'
 import {makeRandomValue, NavigationInterface} from '../../shared'
 import {config} from '../../const'
-import {styles} from './components/styles'
+import styles from './styles'
 
 type RenderCarouselItem = {
   item: any
