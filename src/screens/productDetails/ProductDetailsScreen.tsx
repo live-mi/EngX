@@ -5,16 +5,16 @@ import {
   ScrollView,
   Dimensions,
   View,
-  StyleSheet,
   Text,
 } from 'react-native'
 import Carousel, {Pagination} from 'react-native-snap-carousel'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {Button, Divider} from 'react-native-elements'
+import {Card} from 'react-native-elements'
 import {ProductModel, useGetProductByIdQuery} from '../../features/products'
 import {makeRandomValue, NavigationInterface} from '../../shared'
 import {config} from '../../const'
-import {Card} from 'react-native-elements'
+import styles from './styles'
 
 type RenderCarouselItem = {
   item: any
@@ -29,6 +29,7 @@ interface ProductDetailsScreenProps extends NavigationInterface {}
 
 export const ProductDetailsScreen: FC<ProductDetailsScreenProps> = ({
   route,
+  navigation,
 }) => {
   const {data, isLoading, refetch} = useGetProductByIdQuery(route.params.id)
   const product: ProductModel | undefined = data?.data
@@ -64,6 +65,11 @@ export const ProductDetailsScreen: FC<ProductDetailsScreenProps> = ({
     carouselRef.current?.snapToItem(previousIndex)
     setCurrentCarouselIndex(previousIndex)
   }
+
+  const addToCart = useCallback(
+    () => navigation.navigate('ProductAddedToCartModal'),
+    [],
+  )
 
   if (!product) {
     return (
@@ -142,47 +148,10 @@ export const ProductDetailsScreen: FC<ProductDetailsScreenProps> = ({
           <Button
             style={styles.addToCartButton}
             title="Add to Cart"
-            onPress={() => console.log('Add to Cart')}
+            onPress={addToCart}
           />
         </View>
       </ScrollView>
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  scrollViewContainer: {
-    marginTop: 10,
-  },
-  viewContainer: {
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  carouselContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  productInfoContainer: {
-    margin: 16,
-  },
-  productInfoSection: {
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  addToCartButton: {
-    margin: 16,
-    // position: 'absolute',
-    bottom: 10,
-  },
-  paginationActiveDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    marginHorizontal: 8,
-    backgroundColor: '#008ACE',
-  },
-  paginationInactiveDot: {
-    backgroundColor: '#C3C3C3',
-  },
-})

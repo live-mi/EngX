@@ -1,5 +1,5 @@
 import React, {FC, useState, useCallback} from 'react'
-import {RefreshControl, ScrollView, SafeAreaView} from 'react-native'
+import {RefreshControl, ScrollView, SafeAreaView, StatusBar} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {Input} from 'react-native-elements'
 import {ProductModel, useGetProductsQuery} from '../../features/products'
@@ -13,29 +13,34 @@ export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
   const {data, isLoading, refetch} = useGetProductsQuery('')
   const products = data?.data || []
 
-  const onSearchChange = (text: string) => {
-    setSearchState(text)
-  }
+  const onSearchChange = useCallback(
+    (text: string) => {
+      setSearchState(text)
+    },
+    [searchText],
+  )
 
-  const onProductCardClick = (id: string) => {
-    navigation.push('ProductDetails', {
-      id,
+  const onProductCardClick = useCallback((id: string) => {
+    navigation.navigate('ProductDetailsStack', {
+      screen: 'ProductDetails',
+      params: {id},
     })
-  }
+  }, [])
 
   const onRefresh = useCallback(() => refetch(), [])
 
   return (
     <SafeAreaView>
+      <StatusBar barStyle="dark-content" />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         refreshControl={
           <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
         }>
-        {/*@ts-ignore*/}
         <Input
           placeholder="Search Item"
           leftIcon={<Icon name="user" size={24} color="black" />}
+          autoCompleteType={false}
           value={searchText}
           onChangeText={onSearchChange}
         />
