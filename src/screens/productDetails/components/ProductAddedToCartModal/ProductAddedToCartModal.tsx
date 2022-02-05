@@ -2,6 +2,7 @@ import React, {FC} from 'react'
 import {Text, View} from 'react-native'
 import {Button} from 'react-native-elements'
 import {IconCircle, Modal} from '../../../../components'
+import {Firework} from '../../../../components/Firework'
 import styles from './styles'
 
 export const ProductAddedToCartModal: FC<any> = ({navigation}) => {
@@ -9,6 +10,7 @@ export const ProductAddedToCartModal: FC<any> = ({navigation}) => {
 
   return (
     <Modal>
+      <Firework />
       <View style={styles.container}>
         <View>
           <IconCircle

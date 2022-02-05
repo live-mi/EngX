@@ -17,6 +17,7 @@ import {
   sharedUseCreateTokenMutation,
   useCreateTokenMutation,
 } from '../features/auth'
+import {NoInternetModal} from '../screens/productDetails/components/NoInternetModal'
 
 const Stack = createNativeStackNavigator()
 
@@ -62,6 +63,7 @@ export const HomeStackNavigator = () => {
           component={LoginToContinueModal}
         />
         <Stack.Screen name="SelectColorModal" component={SelectColorModal} />
+        <Stack.Screen name="NoInternetModal" component={NoInternetModal} />
       </Stack.Group>
       <Stack.Group>
         <Stack.Screen name="SignIn" component={SignInScreen} />
