@@ -1,10 +1,19 @@
-import React, {FC, useState, useCallback} from 'react'
-import {RefreshControl, ScrollView, SafeAreaView, StatusBar} from 'react-native'
+import React, {FC, useState, useCallback, useEffect} from 'react'
+import {
+  RefreshControl,
+  ScrollView,
+  SafeAreaView,
+  StatusBar,
+  View,
+  Text,
+} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import {Input} from 'react-native-elements'
 import {ProductModel, useGetProductsQuery} from '../../features/products'
 import {ProductCard, ItemsList} from '../../components'
 import {NavigationInterface} from 'shared/types/navigation.interface'
+import {useAsyncStorage, useWatchLocation} from '../../shared/hooks'
+import {LOCATION_KEY} from '../../shared/const'
 
 interface HomeScreenProps extends NavigationInterface {}
 
@@ -12,6 +21,8 @@ export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
   const [searchText, setSearchState] = useState<string>('')
   const {data, isLoading, refetch} = useGetProductsQuery('')
   const products = data?.data || []
+  const location = useWatchLocation()
+  const {getItem, setItem} = useAsyncStorage()
 
   const onSearchChange = useCallback(
     (text: string) => {
@@ -29,9 +40,32 @@ export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
 
   const onRefresh = useCallback(() => refetch(), [])
 
+  useEffect(() => {
+    ;(async () => {
+      const location = await getItem(LOCATION_KEY)
+      if (location) {
+        const parsed = JSON.parse(location)
+        console.log('location', parsed)
+      }
+    })()
+  }, [])
+
+  useEffect(() => {
+    ;(async () => {
+      if (location?.longitude && location?.latitude) {
+        // await setItem(LOCATION_KEY, JSON.stringify(location))
+      }
+    })()
+  }, [location])
+
   return (
     <SafeAreaView>
       <StatusBar barStyle="dark-content" />
+      <View>
+        <Text>Location</Text>
+        <Text>{location?.latitude}</Text>
+        <Text>{location?.longitude}</Text>
+      </View>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         refreshControl={
