@@ -6,12 +6,12 @@ import {ProductModel} from '../../features/products'
 
 interface CardProps {
   product: ProductModel
-  onClick: (id: string) => void
+  onClick?: (id: string) => void
 }
 
 export const ProductCard: FC<CardProps> = ({product, onClick}) => {
   return (
-    <TouchableOpacity onPress={() => onClick(product.id)}>
+    <TouchableOpacity onPress={() => onClick?.(product.id)}>
       <Card>
         <Card.Image
           source={{uri: `${config.baseImageUrl}seed/${product.id}/300/200`}}

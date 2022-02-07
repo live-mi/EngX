@@ -1,7 +1,7 @@
 import React, {FC, useContext} from 'react'
 import {createDrawerNavigator} from '@react-navigation/drawer'
 import {HomeStackNavigator} from './HomeStackNavigator'
-import {CartScreen, SignInScreen} from '../screens'
+import {CartScreen, SignInScreen, MyOrdersScreen, MapScreen} from '../screens'
 import {CameraScreen} from '../screens/camera'
 import {ImagePickerScreen} from '../screens/imagePicker'
 import {CustomDrawerContent} from './CustomDrawerContent'
@@ -24,9 +24,11 @@ export const DrawerNavigator: FC = () => {
       ) : (
         <>
           <Drawer.Screen name="My Profile" component={MyProfileScreen} />
+          <Drawer.Screen name="My Orders" component={MyOrdersScreen} />
           <Drawer.Screen name="My Cart" component={CartScreen} />
         </>
       )}
+      <Drawer.Screen name="Map" component={MapScreen} />
       <Drawer.Screen name="Camera" component={CameraScreen} />
       <Drawer.Screen name="Image Picker" component={ImagePickerScreen} />
     </Drawer.Navigator>

@@ -1,4 +1,4 @@
-import React, {FC, useState, useCallback, useEffect} from 'react'
+import React, {FC, useState, useCallback} from 'react'
 import {
   RefreshControl,
   ScrollView,
@@ -13,8 +13,7 @@ import debounce from 'lodash/debounce'
 import {ProductModel, useGetProductsQuery} from '../../features/products'
 import {ProductCard, ItemsList} from '../../components'
 import {NavigationInterface} from 'shared/types/navigation.interface'
-import {useAsyncStorage, useWatchLocation} from '../../shared/hooks'
-import {LOCATION_KEY} from '../../shared/const'
+import {useWatchLocation} from '../../shared/hooks'
 import {TextInput} from '../../components/TextInput'
 import styles from './styles'
 import {useSearchHistory} from '../../shared/hooks/useSearchHistory'
@@ -28,9 +27,6 @@ export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
   const products = data?.data || []
   const {history = [], removeItem, addItem} = useSearchHistory<string>()
   const location = useWatchLocation()
-  const {getItem} = useAsyncStorage()
-
-  console.log('HomeScreen: history', history)
 
   const debouncedRefetch = useCallback(
     debounce(async (text: string) => {
@@ -61,34 +57,15 @@ export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
 
   const onSelectSearchHistoryItem = (item: string) => () => {
     setSearchState(item)
-    console.log('onSelectSearchHistoryItem', item)
   }
 
   const onRemoveSearchHistoryItem = (index: number) => async () => {
     await removeItem(index)
-    console.log('onRemoveSearchHistoryItem', index)
   }
 
   const onInputFocus = () => setFocus(true)
 
   const onInputBlur = () => setFocus(false)
-
-  useEffect(() => {
-    ;(async () => {
-      const location = await getItem(LOCATION_KEY)
-      if (location) {
-        const parsed = JSON.parse(location)
-      }
-    })()
-  }, [])
-
-  useEffect(() => {
-    ;(async () => {
-      if (location?.longitude && location?.latitude) {
-        // await setItem(LOCATION_KEY, JSON.stringify(location))
-      }
-    })()
-  }, [location])
 
   return (
     <SafeAreaView>
