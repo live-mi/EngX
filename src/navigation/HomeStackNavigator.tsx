@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import {ProductDetailsNavigator} from './ProductDetailsNavigator'
 import {
@@ -12,19 +12,15 @@ import {
   ProductAddedToCartModal,
   LoginToContinueModal,
   SelectColorModal,
+  LogoutDialogModal,
 } from '../screens/productDetails/components'
-import {
-  sharedUseCreateTokenMutation,
-  useCreateTokenMutation,
-} from '../features/auth'
 import {NoInternetModal} from '../screens/productDetails/components/NoInternetModal'
+import {StorageContext} from '../components/App/StorageContext'
 
 const Stack = createNativeStackNavigator()
 
 export const HomeStackNavigator = () => {
-  const [, userToken] = useCreateTokenMutation({
-    fixedCacheKey: sharedUseCreateTokenMutation,
-  })
+  const {token} = useContext(StorageContext)
 
   return (
     <Stack.Navigator
@@ -45,7 +41,7 @@ export const HomeStackNavigator = () => {
         screenOptions={{
           headerShown: true,
         }}>
-        {!userToken.data ? (
+        {!token ? (
           <>
             <Stack.Screen name="MyCart" component={LoginFirstCartScreen} />
           </>
@@ -62,6 +58,7 @@ export const HomeStackNavigator = () => {
           name="LoginToContinueModal"
           component={LoginToContinueModal}
         />
+        <Stack.Screen name="LogoutDialogModal" component={LogoutDialogModal} />
         <Stack.Screen name="SelectColorModal" component={SelectColorModal} />
         <Stack.Screen name="NoInternetModal" component={NoInternetModal} />
       </Stack.Group>

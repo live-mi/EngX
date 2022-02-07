@@ -45,7 +45,6 @@ export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
       const location = await getItem(LOCATION_KEY)
       if (location) {
         const parsed = JSON.parse(location)
-        console.log('location', parsed)
       }
     })()
   }, [])

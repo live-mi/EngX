@@ -33,7 +33,7 @@ export const ImagePickerModal: FC<ImagePickerModalProps> = ({
         <Pressable style={styles.button} onPress={onCameraPress}>
           <Image
             style={styles.buttonIcon}
-            source={require('../../../../assets/images/empty_box.png')}
+            source={require('../../../../assets/images/camera.png')}
           />
           <Text style={styles.buttonText}>Camera</Text>
         </Pressable>

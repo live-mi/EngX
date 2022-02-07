@@ -35,7 +35,7 @@ export const ImagePickerAvatar: FC<ImagePickerAvatarProps> = ({
             source={require('../../../../assets/images/addButton.png')}
           />
         </TouchableOpacity>
-        <Text style={styles.usernameText}>Gapur Kassym</Text>
+        <Text style={styles.usernameText} />
       </View>
     </ImageBackground>
   )
