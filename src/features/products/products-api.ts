@@ -10,7 +10,12 @@ export const productsApi = createApi({
   }),
   endpoints: builder => ({
     getProducts: builder.query<ResponseData<ProductModel[]>, string>({
-      query: () => 'products',
+      query: (query: string) => ({
+        url: 'products',
+        params: {
+          'filter[name]': query,
+        },
+      }),
     }),
     getProductById: builder.query<ResponseData<ProductModel>, string>({
       query: id => `products/${id}`,
