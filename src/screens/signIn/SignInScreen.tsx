@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useRef, useState} from 'react'
+import React, {FC, useContext, useEffect, useRef, useState} from 'react'
 import {
   ActivityIndicator,
   Animated,
@@ -12,6 +12,7 @@ import {
   useCreateTokenMutation,
 } from '../../features/auth'
 import styles from './styles'
+import {StorageContext} from '../../components/App/StorageContext'
 
 export const SignInScreen: FC<any> = ({navigation}) => {
   // @TODO: remove placeholder later
@@ -23,6 +24,14 @@ export const SignInScreen: FC<any> = ({navigation}) => {
     useCreateTokenMutation({
       fixedCacheKey: sharedUseCreateTokenMutation,
     })
+  const {setTokenAsync} = useContext(StorageContext)
+
+  useEffect(() => {
+    if (isSuccess && data) {
+      // @ts-ignore
+      setTokenAsync(data)
+    }
+  }, [isSuccess, data])
 
   useEffect(() => {
     if (isError) {
