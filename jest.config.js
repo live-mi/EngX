@@ -1,6 +1,10 @@
 process.env.TZ = 'UTC'
 
 module.exports = {
+  testMatch: [
+    '<rootDir>/src/**/__tests__/**/*.(ts|js)?(x)',
+    '<rootDir>/src/**/?(*.)(spec|test).(ts|js)?(x)',
+  ],
   roots: ['<rootDir>/src'],
   clearMocks: true,
   collectCoverage: true,
