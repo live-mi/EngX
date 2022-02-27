@@ -68,7 +68,7 @@ export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
   const onInputBlur = () => setFocus(false)
 
   return (
-    <SafeAreaView>
+    <SafeAreaView testID="home-screen-container">
       <StatusBar barStyle="dark-content" />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"

@@ -59,3 +59,6 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 /coverage/
+build
+ios/build
+android/build
