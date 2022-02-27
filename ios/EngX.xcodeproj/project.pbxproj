@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3D5CB9007661EA2D0967B6A8 /* libPods-EngX-EngXTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 397C880BAB1D7354298B3D4B /* libPods-EngX-EngXTests.a */; };
+		4DF67C6927CB9F5F00C32501 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DF67C6827CB9F5E00C32501 /* AppCenter-Config.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A25AF0E2F8AF16C505885BD4 /* libPods-EngX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0911BC0D1BAF398442E5474 /* libPods-EngX.a */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		2C2901F180B2F12BCBC3383A /* Pods-EngX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngX.release.xcconfig"; path = "Target Support Files/Pods-EngX/Pods-EngX.release.xcconfig"; sourceTree = "<group>"; };
 		333B6AADA11EA1E4C80C1103 /* Pods-EngX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngX.debug.xcconfig"; path = "Target Support Files/Pods-EngX/Pods-EngX.debug.xcconfig"; sourceTree = "<group>"; };
 		397C880BAB1D7354298B3D4B /* libPods-EngX-EngXTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EngX-EngXTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DF67C6827CB9F5E00C32501 /* AppCenter-Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "EngX/AppCenter-Config.plist"; sourceTree = "<group>"; };
 		612CFAEB678FD3312F2E07B1 /* Pods-EngX-EngXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngX-EngXTests.debug.xcconfig"; path = "Target Support Files/Pods-EngX-EngXTests/Pods-EngX-EngXTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = EngX/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -116,6 +118,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				4DF67C6827CB9F5E00C32501 /* AppCenter-Config.plist */,
 				13B07FAE1A68108700A75B9A /* EngX */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* EngXTests */,
@@ -244,6 +247,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				4DF67C6927CB9F5F00C32501 /* AppCenter-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
