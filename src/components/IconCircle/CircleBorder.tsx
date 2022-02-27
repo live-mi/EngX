@@ -7,6 +7,7 @@ interface CircleBorderProps {
   borderWidth?: number
   borderColor?: string
   backgroundColor?: string
+  testID?: string
 }
 
 export const CircleBorder: FC<CircleBorderProps> = ({
@@ -15,6 +16,7 @@ export const CircleBorder: FC<CircleBorderProps> = ({
   borderColor,
   backgroundColor,
   children,
+  testID,
 }) => (
   <View
     style={{
@@ -25,7 +27,8 @@ export const CircleBorder: FC<CircleBorderProps> = ({
       borderColor,
       borderWidth,
       backgroundColor,
-    }}>
+    }}
+    testID={testID}>
     {children}
   </View>
 )

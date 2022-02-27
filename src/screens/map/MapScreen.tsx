@@ -20,7 +20,7 @@ export const MapScreen: FC<MyOrdersProps> = () => {
   const hasLocation = Boolean(location?.latitude && location?.longitude)
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="map-container-id">
       <MapView
         style={styles.map}
         initialRegion={{

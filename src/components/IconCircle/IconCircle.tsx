@@ -8,6 +8,7 @@ interface IconCircleProps {
   borderWidth?: number
   borderColor?: string
   backgroundColor?: string
+  testID?: string
 }
 
 export const IconCircle: FC<IconCircleProps & IconProps> = ({
@@ -15,13 +16,15 @@ export const IconCircle: FC<IconCircleProps & IconProps> = ({
   borderWidth = 2,
   borderColor = 'black',
   backgroundColor = '#ffffff',
+  testID,
   ...props
 }) => (
   <CircleBorder
     size={circleSize}
     borderWidth={borderWidth}
     borderColor={borderColor}
-    backgroundColor={backgroundColor}>
+    backgroundColor={backgroundColor}
+    testID={testID}>
     <Icon {...props} />
   </CircleBorder>
 )
