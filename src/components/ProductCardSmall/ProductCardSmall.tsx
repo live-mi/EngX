@@ -1,5 +1,5 @@
 import React, {FC} from 'react'
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import {Text, TouchableOpacity, View} from 'react-native'
 import {Card} from 'react-native-elements'
 import {config} from '../../const'
 import {ProductModel} from '../../features/products'
@@ -8,11 +8,12 @@ import styles from './styles'
 interface CardProps {
   product: ProductModel
   onClick?: (id: string) => void
+  testID?: string
 }
 
-export const ProductCardSmall: FC<CardProps> = ({product, onClick}) => {
+export const ProductCardSmall: FC<CardProps> = ({product, onClick, testID}) => {
   return (
-    <TouchableOpacity onPress={() => onClick?.(product.id)}>
+    <TouchableOpacity onPress={() => onClick?.(product.id)} testID={testID}>
       <Card>
         <Card.Title style={styles.title}>{product.attributes.name}</Card.Title>
         <View style={styles.content}>

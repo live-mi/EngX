@@ -11,7 +11,9 @@ interface CardProps {
 
 export const ProductCard: FC<CardProps> = ({product, onClick}) => {
   return (
-    <TouchableOpacity onPress={() => onClick?.(product.id)}>
+    <TouchableOpacity
+      onPress={() => onClick?.(product.id)}
+      accessibilityLabel="product card container">
       <Card>
         <Card.Image
           source={{uri: `${config.baseImageUrl}seed/${product.id}/300/200`}}

@@ -73,7 +73,7 @@ export const ProductDetailsScreen: FC<ProductDetailsScreenProps> = ({
 
   if (!product) {
     return (
-      <SafeAreaView>
+      <SafeAreaView testID="product-details-screen-container">
         <Text>There's no such a product</Text>
       </SafeAreaView>
     )
@@ -86,7 +86,8 @@ export const ProductDetailsScreen: FC<ProductDetailsScreenProps> = ({
         contentInsetAdjustmentBehavior="automatic"
         refreshControl={
           <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
-        }>
+        }
+        testID="product-details-screen-container">
         <View style={styles.viewContainer}>
           <View style={styles.carouselContainer}>
             <View>
