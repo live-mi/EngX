@@ -5,7 +5,7 @@ import {NavigationInterface} from '../../shared'
 import {useWatchLocation} from '../../shared/hooks'
 import styles from './styles'
 
-interface MyOrdersProps extends NavigationInterface {}
+type MyOrdersProps = NavigationInterface
 
 const screen = Dimensions.get('window')
 

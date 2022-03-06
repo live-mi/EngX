@@ -84,7 +84,7 @@ export const SignInScreen: FC<any> = ({navigation}) => {
       <Animated.View style={{...styles.errorContainer, opacity: animation}}>
         {isError && (
           <Text style={styles.errorMessage}>
-            {/* @ts-ignore*/}
+            {/* @ts-ignore */}
             {error?.data?.error_description}
           </Text>
         )}

@@ -1,12 +1,11 @@
 import React, {FC, ReactNode} from 'react'
 import {StyleSheet, View} from 'react-native'
-import {ProductModel} from '../../features/products'
 
-interface ItemsProps<T> {
+interface ItemsProps {
   children: ReactNode
 }
 
-export const ItemsList: FC<ItemsProps<ProductModel[]>> = ({children}) => {
+export const ItemsList: FC<ItemsProps> = ({children}) => {
   return (
     <View style={styles.container} accessibilityRole="list">
       {children}

@@ -5,7 +5,7 @@ import styles from './styles'
 import {ProductModel, useGetProductsQuery} from '../../features/products'
 import {ProductCardSmall} from '../../components'
 
-interface MyOrdersProps extends NavigationInterface {}
+type MyOrdersProps = NavigationInterface
 
 export const MyOrdersScreen: FC<MyOrdersProps> = ({navigation}) => {
   const {data} = useGetProductsQuery('')

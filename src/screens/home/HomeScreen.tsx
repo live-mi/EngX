@@ -13,12 +13,11 @@ import debounce from 'lodash/debounce'
 import {ProductModel, useGetProductsQuery} from '../../features/products'
 import {ProductCard, ItemsList} from '../../components'
 import {NavigationInterface} from 'shared/types/navigation.interface'
-import {useWatchLocation} from '../../shared/hooks'
 import {TextInput} from '../../components/TextInput'
 import styles from './styles'
 import {useSearchHistory} from '../../shared/hooks/useSearchHistory'
 
-interface HomeScreenProps extends NavigationInterface {}
+type HomeScreenProps = NavigationInterface
 
 export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
   const [searchText, setSearchState] = useState<string>('')
@@ -26,7 +25,6 @@ export const HomeScreen: FC<HomeScreenProps> = ({navigation}) => {
   const {data, isLoading, refetch} = useGetProductsQuery(searchText)
   const products = data?.data || []
   const {history = [], removeItem, addItem} = useSearchHistory<string>()
-  const location = useWatchLocation()
 
   const debouncedRefetch = useCallback(
     debounce(async (text: string) => {

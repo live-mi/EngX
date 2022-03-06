@@ -9,8 +9,7 @@ import {
 } from 'react-native'
 import Carousel, {Pagination} from 'react-native-snap-carousel'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import {Button, Divider} from 'react-native-elements'
-import {Card} from 'react-native-elements'
+import {Button, Divider, Card} from 'react-native-elements'
 import {ProductModel, useGetProductByIdQuery} from '../../features/products'
 import {makeRandomValue, NavigationInterface} from '../../shared'
 import {config} from '../../const'
@@ -25,7 +24,7 @@ const renderCarouselItem = ({item}: RenderCarouselItem) => {
   return <Card.Image source={item} />
 }
 
-interface ProductDetailsScreenProps extends NavigationInterface {}
+type ProductDetailsScreenProps = NavigationInterface
 
 export const ProductDetailsScreen: FC<ProductDetailsScreenProps> = ({
   route,

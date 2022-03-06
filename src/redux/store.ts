@@ -1,8 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit'
 import {setupListeners} from '@reduxjs/toolkit/query'
+import devToolsEnhancer from 'remote-redux-devtools'
 import {productsApi} from '../features/products'
 import {authApi} from '../features/auth'
-import devToolsEnhancer from 'remote-redux-devtools'
 
 export const store = configureStore({
   reducer: {
