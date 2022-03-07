@@ -30,20 +30,19 @@ before_script:
   - yes | android-sdk-linux/cmdline-tools/bin/sdkmanager --sdk_root=. --licenses
   - set -o pipefail
 
-  # replace {...} with your values
 buildRelease:
   stage: buildReleaseAndDistribute
   only:
     - master #ex. feature\/.*$
     - release.*$
   script:
-    - ./gradlew assemble{flavor_name}Release
+    - ./gradlew assembleprodRelease
     - apt-get install nodejs --yes
     - apt-get install npm --yes
     - npm install -g appcenter-cli
     - appcenter login --token $APPCENTER_TOKEN
-    - appcenter distribute release --app {account_name}/{project_name} --file app/build/outputs/apk/{flavor_name}/release/app-{flavor_name}-release.apk --group "{QA_GROUP_NAME}"
+    - appcenter distribute release --app live-mi/EngX --file app/build/outputs/apk/prod/release/app-prod-release.apk --group "prod"
     - appcenter logout
   artifacts:
     paths:
-      - app/build/outputs/apk/{flavor_name}/release
+      - app/build/outputs/apk/prod/release
