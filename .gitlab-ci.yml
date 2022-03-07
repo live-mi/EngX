@@ -35,7 +35,7 @@ buildRelease:
   stage: buildReleaseAndDistribute
   only:
     - master #ex. feature\/.*$
-    - {some_branch} 
+    - release.*$
   script:
     - ./gradlew assemble{flavor_name}Release
     - apt-get install nodejs --yes
@@ -46,4 +46,4 @@ buildRelease:
     - appcenter logout
   artifacts:
     paths:
-      - app/build/outputs/apk/{falvor_name}/release
+      - app/build/outputs/apk/{flavor_name}/release
