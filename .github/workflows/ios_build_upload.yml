@@ -3,7 +3,7 @@ name: iOS binary build & upload
 on:
   pull_request:
     branches:
-      - 'release-v**'
+      - 'release/**'
 
 jobs:
   deploy:
