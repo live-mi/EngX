@@ -79,6 +79,8 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
+    devDisabledInStaging: true,
+    bundleInStaging: true,
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -223,6 +225,13 @@ dependencies {
 task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.implementation
     into 'libs'
+}
+
+staging {
+  matchingFallbacks = ['qa']
+  signingConfig signingConfigs.debug
+  minifyEnabled enableProguardInReleaseBuilds
+  proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

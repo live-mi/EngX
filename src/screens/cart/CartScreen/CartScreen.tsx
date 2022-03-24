@@ -8,7 +8,7 @@ export const CartScreen: FC<any> = ({navigation}) => {
     navigation.navigate('Main')
   }
 
-  //@TODO: Display items in the cart after implementation API call
+  // @TODO: Display items in the cart after implementation API call
   return (
     <View style={styles.container}>
       <Image

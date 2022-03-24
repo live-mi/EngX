@@ -14,10 +14,12 @@ import {ConnectionProvider} from '../../shared/ConnectionContext'
 import {useToken} from '../../shared/hooks/useToken'
 import {TOKEN_KEY} from '../../shared/const'
 import {TokenResponseModel} from '../../features/auth'
+import {env} from '../../config'
 
 Icon.loadFont()
 
 export const App = () => {
+  console.log('env!!!!!!!!!!!!!!!!', env)
   const routeNameRef = useRef<string>()
   const navigationRef = useNavigationContainerRef()
   const {isOffline} = useConnectionInfo()

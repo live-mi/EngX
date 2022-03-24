@@ -1,0 +1,7 @@
+src/storybook
+scripts
+.metro.config.js
+*.e2e.js
+*.e2e.ts
+environment.js
+block-navigation.js

@@ -69,9 +69,9 @@ export const Firework: FC<FireworkProps> = ({
   const explosionBox = () => {
     const balls = Array.from({length: iterations}, (_, index) => index + 1)
     let step = 0
-    let randomTops: any = []
-    let randomLefts: any = []
-    let randomColors: any = []
+    const randomTops: any = []
+    const randomLefts: any = []
+    const randomColors: any = []
 
     while (step <= iterations) {
       randomTops[step] = moveAnim.interpolate({
@@ -82,18 +82,13 @@ export const Firework: FC<FireworkProps> = ({
         inputRange: [0, 1],
         outputRange: [100, getRandomNumber(200)],
       })
-      randomColors[step] =
-        'rgb(' +
-        getRandomNumber(255) +
-        ',' +
-        getRandomNumber(255) +
-        ',' +
-        getRandomNumber(255) +
-        ')'
+      randomColors[step] = `rgb(${getRandomNumber(255)},${getRandomNumber(
+        255,
+      )},${getRandomNumber(255)})`
       step += 1
     }
 
-    let ballOpacity = opacityAnim.interpolate({
+    const ballOpacity = opacityAnim.interpolate({
       inputRange: [0, 1],
       outputRange: [0, 1],
     })
